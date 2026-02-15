@@ -447,7 +447,7 @@
             <mxRectangle height="30" width="30" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="t3nzKWgweVs0BjdfaRgN-49" parent="t3nzKWgweVs0BjdfaRgN-47" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;fontStyle=5;overflow=hidden;whiteSpace=wrap;html=1;shadow=1;" value="codifoVenta VARHAR(6)" vertex="1">
+        <mxCell id="t3nzKWgweVs0BjdfaRgN-49" parent="t3nzKWgweVs0BjdfaRgN-47" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;fontStyle=5;overflow=hidden;whiteSpace=wrap;html=1;shadow=1;" value="codigoVenta VARCHAR(6)" vertex="1">
           <mxGeometry height="30" width="240" x="30" as="geometry">
             <mxRectangle height="30" width="240" as="alternateBounds" />
           </mxGeometry>
