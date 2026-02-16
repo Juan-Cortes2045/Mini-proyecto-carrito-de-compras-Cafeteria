@@ -6,7 +6,7 @@ GO
 
 CREATE TABLE Rol (
     id INT PRIMARY KEY,
-    nombre_rol VARCHAR(50) NOT NULL
+    nombre_Rol VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE NivelFormacion (
@@ -18,7 +18,7 @@ CREATE TABLE NivelFormacion (
 CREATE TABLE ProgramaFormativo (
     codigo VARCHAR(15) PRIMARY KEY,
     nombre_Programa VARCHAR(100) NOT NULL,
-    id_nivelFormacion INT,
+    id_NivelFormacion INT,
     ficha INT,
     FOREIGN KEY (id_nivelFormacion) REFERENCES NivelFormacion(id)
 );
@@ -28,12 +28,12 @@ CREATE TABLE Cliente (
     id INT PRIMARY KEY,
     nombres VARCHAR(50) NOT NULL,
     apellidos VARCHAR(50) NOT NULL,
-    id_rol INT,
+    id_Rol INT,
     telefono BIGINT,
     correo VARCHAR(100),
     contraseña VARCHAR(12),
     codigo_ProgramaFormativo VARCHAR(15),
-    FOREIGN KEY (id_rol) REFERENCES Rol(id),
+    FOREIGN KEY (id_Rol) REFERENCES Rol(id),
     FOREIGN KEY (codigo_ProgramaFormativo) REFERENCES ProgramaFormativo(codigo)
 );
 
@@ -46,15 +46,15 @@ CREATE TABLE Producto (
 
 CREATE TABLE Carrito (
     codigo_Carrito VARCHAR(6) PRIMARY KEY,
-    id_cliente INT,
+    id_Cliente INT,
     
-    FOREIGN KEY (id_cliente) REFERENCES Cliente(id)
+    FOREIGN KEY (id_Cliente) REFERENCES Cliente(id)
 );
 
 
 CREATE TABLE Carrito_Producto (
     codigo_Carrito VARCHAR(6),
-    id_producto VARCHAR(15),
+    id_Producto VARCHAR(15),
     PRIMARY KEY (codigo_Carrito, id_producto),
     FOREIGN KEY (codigo_Carrito) REFERENCES Carrito(codigo_Carrito),
     FOREIGN KEY (id_producto) REFERENCES Producto(id)
@@ -94,13 +94,13 @@ CREATE TABLE Administrador (
 CREATE TABLE Pedido (
     codigoVenta VARCHAR(6) PRIMARY KEY,
     codigo_Carrito VARCHAR(6),
-    id_metodoPago VARCHAR(5),
-    id_administrador INT,
-    id_mesa INT,
+    id_MetodoPago VARCHAR(5),
+    id_Administrador INT,
+    id_Mesa INT,
     FOREIGN KEY (codigo_Carrito) REFERENCES Carrito(codigo_Carrito),
-    FOREIGN KEY (id_metodoPago) REFERENCES MetodosPago(id),
-    FOREIGN KEY (id_administrador) REFERENCES Administrador(id),
-    FOREIGN KEY (id_mesa) REFERENCES Mesa(id)
+    FOREIGN KEY (id_MetodoPago) REFERENCES MetodosPago(id),
+    FOREIGN KEY (id_Administrador) REFERENCES Administrador(id),
+    FOREIGN KEY (id_Mesa) REFERENCES Mesa(id)
 );
 
 
