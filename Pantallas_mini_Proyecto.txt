@@ -7,13 +7,14 @@ PANTALLAS IDENTIFICADAS
 
 1. Dashboard-Pantalla de inicio
 2. Login: 
-	-inicio sesion(Usuario/Admin)- Cuenta de Google o Microsoft
-	-registro (Usuario/Admin)- Cuenta de Google o Microsoft
+	-inicio sesion- Cuenta de Google o Microsoft
+	-registro- Cuenta de Google o Microsoft
 	-recuperar contraseña
-3. Listado de productos
+3. Busqueda de productos
 4. Informacion de producto
 5. Carrito
 6. Confirmar pedido:
 	-metodo de pago(tarjeta, nequi, daviplata, etc.)
-7. Gestion de usuario(usuario)
+7. Configuración(perfil usuario, modo oscuro, cuenta)
 8. Gestion de productos: agregar-eliminar-modificar.(admin)
+ 
