@@ -150,6 +150,9 @@ class PersonController{
     + getPerson(id int): Person
 }
 
+class PasswordUtils{
+    + encryptPassword(String password): String
+}
 
 Person --> User 
 Role --> User 
@@ -160,4 +163,14 @@ Product *-- Inventory
 Category o-- Product
 Bill *-- BillDetail
 Table --> Bill
+PersonRepository ..|> IPersonRepository
+PersonRepository --> PersonService
+PersonService ..|> IPersonService
+PersonService --> PersonController
+PasswordUtils ..> PersonService
+IPersonRepository ..> Person
+PersonRepository ..> Person
+IPersonService ..> Person
+PersonController ..> Person
 
+@enduml
