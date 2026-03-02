@@ -40,7 +40,7 @@ class Product{
     - preparationType: String
     - category: Category
     - inventoryList: List<Inventory>
-    + Product
+    + Product()
 }
 
 class CartItem{
@@ -154,20 +154,20 @@ class PasswordUtils{
     + encryptPassword(String password): String
 }
 
-Person --> User 
-Role --> User 
-User --> Cart
+Person "1" -- "1" User 
+Role "*" -- "*" User 
+User "1" --  "*" Cart
 Cart *-- CartItem
-Inventory --> CartItem 
+Inventory "*" --> "1" CartItem 
 Product *-- Inventory
 Category o-- Product
 Bill *-- BillDetail
-Table --> Bill
+Table "1" -- "*" Bill
 PersonRepository ..|> IPersonRepository
-PersonRepository --> PersonService
+PersonService --> IPersonRepository
 PersonService ..|> IPersonService
-PersonService --> PersonController
-PasswordUtils ..> PersonService
+PersonController --> IPersonService
+PersonService ..> PasswordUtils
 IPersonRepository ..> Person
 PersonRepository ..> Person
 IPersonService ..> Person
