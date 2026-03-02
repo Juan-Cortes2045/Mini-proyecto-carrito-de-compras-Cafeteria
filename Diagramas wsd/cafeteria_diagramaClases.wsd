@@ -1,0 +1,163 @@
+@startuml diagrama_de_clases
+
+class Person{
+    - idPerson:int
+    - name: String 
+    - lastname: String 
+    - document: String 
+    - phone: String 
+    - email: String
+    + Person()
+}
+
+class User{
+    - idUser: int
+    - userName: String
+    - person: Person
+    - roles: List<Role>
+    +User()
+}
+
+class Role{
+    - idRole: int
+    - name: String
+    -description: String
+    +Role()
+}
+
+class Category{
+    - idCategory: int
+    - name: String
+    - description: String
+    - product: List<Product>
+    + Category()
+}
+
+class Product{
+    - idProduct: int
+    - name: String
+    - description: String
+    - preparationType: String
+    - category: Category
+    - inventoryList: List<Inventory>
+    + Product
+}
+
+class CartItem{
+    - idCartItem: int
+    - cart: Cart
+    - inventory: Inventory
+    - quantify: int
+    - unitPrice: double
+    - subTotal: double
+    + calculateSubTotal(): double
+}
+
+class Cart{
+    - idCart: int
+    - user: User
+    - items: List<CartItem>
+    + addItem(inventory: Inventory, quantify: int): void
+    + removeItem(inventory: Inventory)
+    + calculateTotal(): double
+    + clear(): void
+}
+
+class Inventory{
+    -idInventory: int
+    - product: Product
+    - stock: int
+    - price: double
+    + Inventory()
+    + updateStock(): void
+    + updatePrice(): void
+    + isAvailable(): boolean
+}
+
+class Bill{
+    - idBill: int
+    - user: User
+    - table: Table
+    - total: double
+    - date: Date
+    - status: String
+    - details: List<BillDetail>
+    + Bill()
+    + calculateTotal(): double 
+    + generate(): void
+    + close(): void
+}
+
+class BillDetail{
+    - idBillDetail: int
+    - bill: Bill
+    - inventory: Inventory
+    - quantify: int
+    - unitPrice: double
+    - subTotal: double
+    + BillDetail()
+    + calculateSubTotal(): double
+}
+
+class Table{
+    - idTable: int
+    - number: int
+    - capacity: int
+    - status: String
+    - bills: List<Bill>
+    +Table()
+}
+
+interface IPersonRepository{
+    + save(person: Person)
+    + findById(id int): Person
+    + findAll(): List<Person>
+    + update(person: Person): void
+    + delete(id: int): void 
+}
+
+class PersonRepository{
+    + save(person: Person)
+    + findById(id int): Person
+    + findAll(): List<Person>
+    + update(person: Person): void
+    + delete(id: int): void 
+}
+
+interface IPersonService{
+    + createPerson(person Person): void
+    + getPerson(id int): Person
+    + getAllPersons(): List<Person>
+    + updatePerson(person Person): void 
+    + deletePerson(id int): void 
+}
+
+
+class PersonService{
+    - PersonRepository: IPersonRepository
+    + PersonService(personRepository: IPersonRepository)
+    + createPerson(person Person): void
+    + getPerson(id int): Person
+    + getAllPersons(): List<Person>
+    + updatePerson(person Person): void 
+    + deletePerson(id int): void 
+}
+
+class PersonController{
+    - personService: IPersonService
+    + PersonController(personService: IPersonService)
+    + createPerson(person Person): void
+    + getPerson(id int): Person
+}
+
+
+Person --> User 
+Role --> User 
+User --> Cart
+Cart *-- CartItem
+Inventory --> CartItem 
+Product *-- Inventory
+Category o-- Product
+Bill *-- BillDetail
+Table --> Bill
+

@@ -1,0 +1,143 @@
+@startuml cafeteria_mer
+hide circle
+skinparam linetype ortho
+
+
+
+entity Person {
+  +id_person : INT <<PK>>
+  name : VARCHAR
+  last_name : VARCHAR
+  document : VARCHAR
+  phone : VARCHAR
+  email : VARCHAR
+}
+
+entity User {
+  +id_user : INT <<PK>>
+  username : VARCHAR
+  password : VARCHAR
+  id_person : INT <<FK>>
+}
+
+entity Role {
+  +id_role : INT <<PK>>
+  name : VARCHAR
+  description : VARCHAR
+}
+
+entity Module {
+  +id_module : INT <<PK>>
+  name : VARCHAR
+  description : VARCHAR
+}
+
+entity View {
+  +id_view : INT <<PK>>
+  name : VARCHAR
+  route : VARCHAR
+}
+
+entity Action {
+  +id_action : INT <<PK>>
+  name : VARCHAR
+}
+
+entity UserRole {
+  +id_user_role : INT <<PK>>
+  id_user : INT <<FK>>
+  id_role : INT <<FK>>
+}
+
+entity RoleModule {
+  +id_role_module : INT <<PK>>
+  id_role : INT <<FK>>
+  id_module : INT <<FK>>
+}
+
+entity ViewModule {
+  +id_view_module : INT <<PK>>
+  id_view : INT <<FK>>
+  id_module : INT <<FK>>
+}
+
+entity ViewAction {
+  +id_view_action : INT <<PK>>
+  id_view : INT <<FK>>
+  id_action : INT <<FK>>
+}
+
+
+entity Category {
+  +id_category : INT <<PK>>
+  name : VARCHAR
+  description : VARCHAR
+}
+
+entity Product {
+  +id_product : INT <<PK>>
+  name : VARCHAR
+  description : VARCHAR
+  preparation_type : VARCHAR
+  id_category : INT <<FK>>
+}
+
+entity Inventory {
+  +id_inventory : INT <<PK>>
+  id_product : INT <<FK>>
+  stock : INT
+  price : DECIMAL
+  effective_date : DATE
+}
+
+entity Cart {
+  +id_cart : INT <<PK>>
+  id_user : INT <<FK>>
+  created_at : DATETIME
+}
+
+entity Table {
+  +id_table : INT <<PK>>
+  number : INT
+  capacity : INT
+  status : VARCHAR
+}
+
+entity Bill {
+  +id_bill : INT <<PK>>
+  id_user : INT <<FK>>
+  id_table : INT <<FK>>
+  total : DECIMAL
+  date : DATETIME
+  status : VARCHAR
+}
+
+entity BillDetail {
+  +id_bill_detail : INT <<PK>>
+  id_bill : INT <<FK>>
+  id_inventory : INT <<FK>>
+  quantity : INT
+  unit_price : DECIMAL
+  subtotal : DECIMAL
+}
+
+
+
+Person||--|| User
+User ||--o{ UserRole
+Role ||--o{ UserRole
+Role ||--o{ RoleModule
+Module ||--o{ RoleModule
+Module ||--o{ ViewModule
+View ||--o{ ViewModule
+View ||--o{ ViewAction
+Action ||--o{ ViewAction
+
+Category ||--o{ Product
+Product ||--o{ Inventory
+User ||--o{ Cart
+User ||--o{ Bill
+Bill ||--o{ BillDetail
+Inventory ||--o{ BillDetail
+Table ||--o{ Bill
+@enduml
