@@ -41,6 +41,9 @@ entity View {
 entity Action {
   +id_action : INT <<PK>>
   name : VARCHAR
+  affect_table: VARCHAR
+  fecha: DATETIME
+  description: VARCHAR
 }
 
 entity UserRole {
