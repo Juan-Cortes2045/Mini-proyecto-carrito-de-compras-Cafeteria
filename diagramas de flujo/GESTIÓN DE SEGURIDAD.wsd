@@ -1,0 +1,25 @@
+@startuml
+left to right direction
+
+actor Administrador
+
+rectangle "Gestión de Seguridad" {
+
+  Administrador --> (Gestionar usuarios)
+  (Gestionar usuarios) --> (Crear usuario) : <<include>>
+  (Gestionar usuarios) --> (Editar usuario) : <<include>>
+  (Gestionar usuarios) --> (Eliminar usuario) : <<include>>
+  (Gestionar usuarios) --> (Asignar rol) : <<include>>
+
+  Administrador --> (Gestionar roles)
+  (Gestionar roles) --> (Crear rol) : <<include>>
+  (Gestionar roles) --> (Editar rol) : <<include>>
+  (Gestionar roles) --> (Eliminar rol) : <<include>>
+  (Gestionar roles) --> (Asignar permisos) : <<include>>
+
+  Administrador --> (Gestionar módulos)
+  Administrador --> (Gestionar vistas)
+  Administrador --> (Gestionar acciones)
+}
+
+@enduml

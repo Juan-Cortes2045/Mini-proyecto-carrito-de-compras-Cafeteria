@@ -1,0 +1,26 @@
+@startuml
+left to right direction
+
+actor Mesero
+actor Cajero
+
+rectangle "Facturación" {
+
+  Mesero --> (Crear factura)
+  (Crear factura) --> (Asociar factura a mesa) : <<include>>
+  (Crear factura) --> (Agregar productos a factura) : <<include>>
+
+  (Agregar productos a factura) --> (Modificar cantidad en factura) : <<extend>>
+  (Agregar productos a factura) --> (Eliminar producto de factura) : <<extend>>
+
+  (Crear factura) --> (Calcular subtotal) : <<include>>
+  (Calcular subtotal) --> (Calcular total) : <<include>>
+
+  Cajero --> (Registrar pago)
+  (Registrar pago) --> (Cerrar factura) : <<include>>
+
+  Cajero --> (Cancelar factura)
+  (Cerrar factura) --> (Generar comprobante) : <<include>>
+}
+
+@enduml

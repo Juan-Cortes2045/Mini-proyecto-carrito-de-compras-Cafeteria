@@ -1,0 +1,15 @@
+@startuml
+left to right direction
+
+actor Administrador
+
+rectangle "Productos" {
+
+  Administrador --> (Crear producto)
+  Administrador --> (Editar producto)
+  Administrador --> (Eliminar producto)
+  Administrador --> (Consultar productos)
+  Administrador --> (Asignar categoría)
+}
+
+@enduml

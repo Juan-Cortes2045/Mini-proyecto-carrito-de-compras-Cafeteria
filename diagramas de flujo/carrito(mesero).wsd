@@ -1,0 +1,17 @@
+@startuml
+left to right direction
+
+actor usuario
+
+rectangle "Carrito" {
+
+  usuario --> (Crear carrito)
+
+  (Crear carrito) --> (Agregar producto al carrito) : <<include>>
+  (Agregar producto al carrito) --> (Modificar cantidad del producto) : <<extend>>
+  (Agregar producto al carrito) --> (Eliminar producto del carrito) : <<extend>>
+
+  usuario --> (Vaciar carrito)
+}
+
+@enduml

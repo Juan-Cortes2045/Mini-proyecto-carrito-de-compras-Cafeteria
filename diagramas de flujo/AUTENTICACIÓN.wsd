@@ -1,0 +1,11 @@
+@startuml
+left to right direction
+
+actor Usuario
+
+rectangle "Módulo de Autenticación" {
+  Usuario --> (Iniciar sesión)
+  Usuario --> (Cerrar sesión)
+}
+
+@enduml

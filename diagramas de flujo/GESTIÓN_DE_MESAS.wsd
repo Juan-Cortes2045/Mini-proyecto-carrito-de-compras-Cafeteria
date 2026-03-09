@@ -1,0 +1,16 @@
+@startuml
+left to right direction
+
+actor Administrador
+actor Mesero
+
+rectangle "Gestión de Mesas" {
+
+  Administrador --> (Crear mesa)
+  Administrador --> (Editar mesa)
+
+  Mesero --> (Cambiar estado de mesa)
+  Mesero --> (Consultar mesas)
+}
+
+@enduml

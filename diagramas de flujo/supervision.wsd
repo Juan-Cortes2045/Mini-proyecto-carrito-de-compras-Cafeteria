@@ -1,0 +1,16 @@
+@startuml
+left to right direction
+
+actor Administrador
+actor Supervisor
+
+rectangle "Reportes" {
+
+  Supervisor --> (Consultar ventas)
+  Supervisor --> (Ver reporte de facturación)
+  Supervisor --> (Ver reporte de inventario)
+
+  Administrador --> (Consultar ventas)
+}
+
+@enduml

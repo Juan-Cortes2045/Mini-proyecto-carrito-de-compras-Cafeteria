@@ -1,0 +1,14 @@
+@startuml
+left to right direction
+
+actor Administrador
+
+rectangle "Categorías" {
+
+  Administrador --> (Crear categoría)
+  Administrador --> (Editar categoría)
+  Administrador --> (Eliminar categoría)
+  Administrador --> (Consultar categorías)
+}
+
+@enduml

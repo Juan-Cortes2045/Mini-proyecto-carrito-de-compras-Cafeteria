@@ -1,0 +1,15 @@
+@startuml
+left to right direction
+
+actor Administrador
+
+rectangle "Inventario" {
+
+  Administrador --> (Registrar entrada de inventario)
+  Administrador --> (Actualizar stock)
+  Administrador --> (Consultar stock)
+  Administrador --> (Actualizar precio)
+  Administrador --> (Consultar historial de precios)
+}
+
+@enduml
